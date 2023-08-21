@@ -1,5 +1,6 @@
 import React from "react";
 import IconButton from "../elements/IconButton";
+import Tooltip from "../elements/Tooltip";
 
 function SearchBar({ searchString, setSearchString }) {
   function handleChange(e) {
@@ -16,11 +17,14 @@ function SearchBar({ searchString, setSearchString }) {
 
   return (
     <div className="searchbar-container">
-      <IconButton
-        icon={<i className="fas fa-search" />}
-        styles={{ fontSize: "16px" }}
-        onClick={handleSearchIconClick}
-      />
+      <Tooltip tooltipContent={"Search"}>
+        <IconButton
+          icon={<i className="fas fa-search" />}
+          styles={{ fontSize: "16px" }}
+          onClick={handleSearchIconClick}
+        />
+      </Tooltip>
+
       <input
         aria-label="Search"
         placeholder="Search"
@@ -28,12 +32,16 @@ function SearchBar({ searchString, setSearchString }) {
         value={searchString}
         onChange={handleChange}
       ></input>
-
-      <IconButton
-        icon={<i className="fa-solid fa-xmark" />}
-        styles={{ fontSize: "18px" }}
-        onClick={handleReset}
-      />
+      <Tooltip tooltipContent={"Cancel"}>
+        <IconButton
+          icon={<i className="fa-solid fa-xmark" />}
+          styles={{
+            fontSize: "18px",
+            visibility: searchString ? "visible" : "hidden",
+          }}
+          onClick={handleReset}
+        />
+      </Tooltip>
     </div>
   );
 }

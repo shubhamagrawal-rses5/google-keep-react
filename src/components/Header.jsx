@@ -9,6 +9,7 @@ function Header(props) {
         Keep
       </div>
       <SearchBar {...props} />
+      <div className="logo-container"></div>
     </div>
   );
 }
