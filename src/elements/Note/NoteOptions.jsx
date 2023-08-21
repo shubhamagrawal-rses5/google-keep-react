@@ -40,6 +40,7 @@ export default function NoteOptions({ note }) {
   }
 
   function handleColorPaletteClick(event) {
+    event.stopPropagation();
     setIsPopoverOpen((prev) => !prev);
   }
 
@@ -56,19 +57,19 @@ export default function NoteOptions({ note }) {
     }
   }
 
-  // useEffect(() => {
-  //   const noteArea = document.querySelector(`#note-${note.id}`);
-  //   const outsideNoteAreaClickHandler = (event) => {
-  //     if (document.contains(event.target) && !noteArea.contains(event.target)) {
-  //       if (isPopoverOpen) setIsPopoverOpen((prev) => !prev);
-  //     }
-  //   };
+  useEffect(() => {
+    const noteArea = document.querySelector(`#note-${note.id}`);
+    const outsideNoteAreaClickHandler = (event) => {
+      if (document.contains(event.target) && !noteArea.contains(event.target)) {
+        if (isPopoverOpen) setIsPopoverOpen((prev) => !prev);
+      }
+    };
 
-  //   window.addEventListener("click", outsideNoteAreaClickHandler);
-  //   return () => {
-  //     window.removeEventListener("click", outsideNoteAreaClickHandler);
-  //   };
-  // }, [isPopoverOpen]);
+    window.addEventListener("click", outsideNoteAreaClickHandler);
+    return () => {
+      window.removeEventListener("click", outsideNoteAreaClickHandler);
+    };
+  }, [isPopoverOpen]);
 
   return (
     <div
@@ -158,7 +159,3 @@ export default function NoteOptions({ note }) {
     </div>
   );
 }
-
-const obj = { a: 1, b: 2 };
-
-const { a: c, b } = obj;

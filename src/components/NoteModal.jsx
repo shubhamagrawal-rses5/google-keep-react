@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import ContentEditableDiv from "../elements/ContentEditableDiv";
 import NoteImage from "../elements/Note/NoteImage";
 import NoteOptions from "../elements/Note/NoteOptions";
@@ -22,6 +22,7 @@ function NoteModal() {
   });
 
   const textAreaTitleRef = useRef(null);
+  const textAreaDescriptionRef = useRef(null);
 
   useAutosizeTextArea(textAreaTitleRef.current, editingNote.title);
 
@@ -37,6 +38,11 @@ function NoteModal() {
   function handleToggle() {
     setEditingNote({ ...editingNote, isPinned: !editingNote.isPinned });
   }
+
+  useEffect(() => {
+    let input = textAreaDescriptionRef.current;
+    input?.focus();
+  }, [textAreaDescriptionRef]);
 
   return open ? (
     <div>
@@ -80,6 +86,7 @@ function NoteModal() {
             }}
           />
           <ContentEditableDiv
+            ref={textAreaDescriptionRef}
             data-placeholder="Note"
             className="note-content note-description"
             value={editingNote.description}

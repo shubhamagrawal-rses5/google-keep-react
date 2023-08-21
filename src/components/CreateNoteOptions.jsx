@@ -37,6 +37,7 @@ export default function CreateNoteOptions({
     ) {
       dispatchNoteEvent("CREATE_NOTE", creatingNote);
     }
+    setIsCreatingPopoverOpen(false);
     eraseAllCreateData();
     setIsCreateAreaExpanded(false);
   }

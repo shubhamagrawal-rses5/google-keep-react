@@ -1,5 +1,14 @@
-export default function ContentEditableDiv({ ...props }) {
+import React from "react";
+
+function ContentEditableDiv({ ...props }, ref) {
   return (
-    <div contentEditable suppressContentEditableWarning={true} {...props}></div>
+    <div
+      ref={ref}
+      contentEditable
+      suppressContentEditableWarning={true}
+      {...props}
+    ></div>
   );
 }
+
+export default React.forwardRef(ContentEditableDiv);
