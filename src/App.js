@@ -38,10 +38,7 @@ function App() {
     open: false,
     note: null,
   });
-  const [colorPopoverState, setcolorPopoverState] = useState({
-    open: false,
-    element: null,
-  });
+
   const [isCreateAreaExpanded, setIsCreateAreaExpanded] = useState(false);
 
   const filteredNotes = getSearchFilterData(notes, searchString);
@@ -104,8 +101,6 @@ function App() {
           setModalState,
           isCreateAreaExpanded,
           setIsCreateAreaExpanded,
-          colorPopoverState,
-          setcolorPopoverState,
         }}
       >
         <CreateNoteArea />

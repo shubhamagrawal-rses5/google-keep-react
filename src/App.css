@@ -137,11 +137,13 @@
     0 1px 3px 1px rgba(60, 64, 67, 0.149);
   --notes-options-container-visibility: visibile;
 }
+
 .note-content-container {
   max-height: 80vh;
   overflow-y: auto;
   border-radius: 8px 8px 0 0;
 }
+
 .note-content {
   display: block;
   margin: 0 0.7rem;
@@ -326,9 +328,7 @@
   visibility: visible;
 }
 
-.note-modal div[contenteditable="true"]
-/* ,
-.note-modal textarea */ {
+.note-modal div[contenteditable="true"] {
   resize: none;
   outline: none;
   /* border: none; */
@@ -411,6 +411,7 @@
   width: max-content;
   box-shadow: 0 1px 6px 0 rgba(60, 64, 67, 0.302);
 }
+
 .note-modal .note-content {
   width: 95%;
 }
@@ -426,6 +427,7 @@
   border-style: solid;
   border-color: transparent transparent white transparent;
 }
+
 .background-color-palette-container {
   display: flex;
 }
